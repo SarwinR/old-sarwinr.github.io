@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://sarwinr.github.io/sitemap.xml
