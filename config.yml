@@ -2,6 +2,7 @@ baseURL: https://sarwinr.github.io
 languageCode: 'en-us'
 title: 'Sarwin Rajiah'
 theme: "PaperMod"
+publishDir: docs
 
 enableRobotsTXT: true
 buildDrafts: false
