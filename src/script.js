@@ -24,7 +24,6 @@ gltfLoader.load("table.gltf", (gltf) => {
 	const table = gltf.scene;
 
 	table.traverse((o) => {
-		console.log(o.name);
 		if (o.name === "computer") {
 			computer = o;
 			o.material = new THREE.MeshStandardMaterial({ color: 0xc5c9b3 });
@@ -32,12 +31,14 @@ gltfLoader.load("table.gltf", (gltf) => {
 			o.material = new THREE.MeshStandardMaterial({ color: 0x695746 });
 		} else if (o.name === "Torus") {
 			o.material = new THREE.MeshStandardMaterial({ color: 0xff0000 });
-			console.log(o.animations);
 		}
 	});
 
 	mixer = new THREE.AnimationMixer(table);
-	const action = mixer.clipAction(gltf.animations[0]);
+	const clips = gltf.animations;
+
+	const clip = THREE.AnimationClip.findByName(clips, "a_rotate_torus");
+	const action = mixer.clipAction(clip);
 	action.play();
 
 	table.position.set(0, -2, 0);
@@ -87,7 +88,7 @@ function hoverEffect() {
 
 	//for (const intersect of intersects) {
 	if (intersects.length > 0) {
-		console.log(intersects[0].object.name);
+		//console.log(intersects[0].object.name);
 		if (intersects[0].object.name === "computer") {
 			intersects[0].object.material.color.set(0x00ff00);
 		} else {
@@ -95,9 +96,15 @@ function hoverEffect() {
 		}
 	}
 }
+let clock = new THREE.Clock();
 
 function animate() {
 	renderer.render(scene, camera);
+
+	var delta = clock.getDelta();
+
+	if (mixer) mixer.update(delta);
+
 	hoverEffect();
 }
 

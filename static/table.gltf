@@ -70,7 +70,7 @@
             "scale" : [
                 0.2837100028991699,
                 0.2837100028991699,
-                0.2837100028991699
+                0.32930678129196167
             ],
             "translation" : [
                 1.5708692073822021,
@@ -133,6 +133,49 @@
                 {
                     "sampler" : 0,
                     "target" : {
+                        "node" : 2,
+                        "path" : "translation"
+                    }
+                },
+                {
+                    "sampler" : 1,
+                    "target" : {
+                        "node" : 2,
+                        "path" : "rotation"
+                    }
+                },
+                {
+                    "sampler" : 2,
+                    "target" : {
+                        "node" : 2,
+                        "path" : "scale"
+                    }
+                }
+            ],
+            "name" : "test_anim",
+            "samplers" : [
+                {
+                    "input" : 24,
+                    "interpolation" : "LINEAR",
+                    "output" : 25
+                },
+                {
+                    "input" : 24,
+                    "interpolation" : "LINEAR",
+                    "output" : 26
+                },
+                {
+                    "input" : 24,
+                    "interpolation" : "LINEAR",
+                    "output" : 27
+                }
+            ]
+        },
+        {
+            "channels" : [
+                {
+                    "sampler" : 0,
+                    "target" : {
                         "node" : 5,
                         "path" : "translation"
                     }
@@ -155,19 +198,19 @@
             "name" : "a_rotate_torus",
             "samplers" : [
                 {
-                    "input" : 24,
+                    "input" : 28,
                     "interpolation" : "LINEAR",
-                    "output" : 25
+                    "output" : 29
                 },
                 {
-                    "input" : 24,
+                    "input" : 28,
                     "interpolation" : "LINEAR",
-                    "output" : 26
+                    "output" : 30
                 },
                 {
-                    "input" : 24,
+                    "input" : 28,
                     "interpolation" : "LINEAR",
-                    "output" : 27
+                    "output" : 31
                 }
             ]
         }
@@ -274,7 +317,7 @@
             ]
         },
         {
-            "name" : "Cube",
+            "name" : "test_anim",
             "primitives" : [
                 {
                     "attributes" : {
@@ -435,14 +478,14 @@
         {
             "bufferView" : 12,
             "componentType" : 5126,
-            "count" : 963,
+            "count" : 1460,
             "max" : [
-                1.0660001039505005,
+                1.2990000247955322,
                 0.07000000029802322,
                 0.30900001525878906
             ],
             "min" : [
-                -1.0660001039505005,
+                -1.3160001039505005,
                 -0.07000000029802322,
                 -0.39100003242492676
             ],
@@ -451,19 +494,19 @@
         {
             "bufferView" : 13,
             "componentType" : 5126,
-            "count" : 963,
+            "count" : 1460,
             "type" : "VEC3"
         },
         {
             "bufferView" : 14,
             "componentType" : 5126,
-            "count" : 963,
+            "count" : 1460,
             "type" : "VEC2"
         },
         {
             "bufferView" : 15,
             "componentType" : 5123,
-            "count" : 1752,
+            "count" : 2808,
             "type" : "SCALAR"
         },
         {
@@ -537,6 +580,36 @@
         {
             "bufferView" : 24,
             "componentType" : 5126,
+            "count" : 44,
+            "max" : [
+                2.0416666666666665
+            ],
+            "min" : [
+                0.25
+            ],
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 25,
+            "componentType" : 5126,
+            "count" : 44,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 26,
+            "componentType" : 5126,
+            "count" : 44,
+            "type" : "VEC4"
+        },
+        {
+            "bufferView" : 27,
+            "componentType" : 5126,
+            "count" : 44,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 28,
+            "componentType" : 5126,
             "count" : 51,
             "max" : [
                 2.0833333333333335
@@ -547,19 +620,19 @@
             "type" : "SCALAR"
         },
         {
-            "bufferView" : 25,
+            "bufferView" : 29,
             "componentType" : 5126,
             "count" : 51,
             "type" : "VEC3"
         },
         {
-            "bufferView" : 26,
+            "bufferView" : 30,
             "componentType" : 5126,
             "count" : 51,
             "type" : "VEC4"
         },
         {
-            "bufferView" : 27,
+            "bufferView" : 31,
             "componentType" : 5126,
             "count" : 51,
             "type" : "VEC3"
@@ -640,100 +713,120 @@
         },
         {
             "buffer" : 0,
-            "byteLength" : 11556,
+            "byteLength" : 17520,
             "byteOffset" : 9096,
             "target" : 34962
         },
         {
             "buffer" : 0,
-            "byteLength" : 11556,
-            "byteOffset" : 20652,
+            "byteLength" : 17520,
+            "byteOffset" : 26616,
             "target" : 34962
         },
         {
             "buffer" : 0,
-            "byteLength" : 7704,
-            "byteOffset" : 32208,
+            "byteLength" : 11680,
+            "byteOffset" : 44136,
             "target" : 34962
         },
         {
             "buffer" : 0,
-            "byteLength" : 3504,
-            "byteOffset" : 39912,
+            "byteLength" : 5616,
+            "byteOffset" : 55816,
             "target" : 34963
         },
         {
             "buffer" : 0,
             "byteLength" : 18384,
-            "byteOffset" : 43416,
+            "byteOffset" : 61432,
             "target" : 34962
         },
         {
             "buffer" : 0,
             "byteLength" : 18384,
-            "byteOffset" : 61800,
+            "byteOffset" : 79816,
             "target" : 34962
         },
         {
             "buffer" : 0,
             "byteLength" : 12256,
-            "byteOffset" : 80184,
+            "byteOffset" : 98200,
             "target" : 34962
         },
         {
             "buffer" : 0,
             "byteLength" : 5352,
-            "byteOffset" : 92440,
+            "byteOffset" : 110456,
             "target" : 34963
         },
         {
             "buffer" : 0,
             "byteLength" : 27648,
-            "byteOffset" : 97792,
+            "byteOffset" : 115808,
             "target" : 34962
         },
         {
             "buffer" : 0,
             "byteLength" : 27648,
-            "byteOffset" : 125440,
+            "byteOffset" : 143456,
             "target" : 34962
         },
         {
             "buffer" : 0,
             "byteLength" : 18432,
-            "byteOffset" : 153088,
+            "byteOffset" : 171104,
             "target" : 34962
         },
         {
             "buffer" : 0,
             "byteLength" : 6912,
-            "byteOffset" : 171520,
+            "byteOffset" : 189536,
             "target" : 34963
         },
         {
             "buffer" : 0,
+            "byteLength" : 176,
+            "byteOffset" : 196448
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 528,
+            "byteOffset" : 196624
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 704,
+            "byteOffset" : 197152
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 528,
+            "byteOffset" : 197856
+        },
+        {
+            "buffer" : 0,
             "byteLength" : 204,
-            "byteOffset" : 178432
+            "byteOffset" : 198384
         },
         {
             "buffer" : 0,
             "byteLength" : 612,
-            "byteOffset" : 178636
+            "byteOffset" : 198588
         },
         {
             "buffer" : 0,
             "byteLength" : 816,
-            "byteOffset" : 179248
+            "byteOffset" : 199200
         },
         {
             "buffer" : 0,
             "byteLength" : 612,
-            "byteOffset" : 180064
+            "byteOffset" : 200016
         }
     ],
     "buffers" : [
         {
-            "byteLength" : 180676,
+            "byteLength" : 200628,
             "uri" : "table.bin"
         }
     ]
