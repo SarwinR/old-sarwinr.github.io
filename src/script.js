@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { Screen } from "./modules/screen.js";
 
 const bg_color = 0x8ec3b0;
 const btn_color = 0x4d8a74;
@@ -145,12 +146,6 @@ function clicked(_link = null) {
 		default:
 			break;
 	}
-
-	// if (intersects[0].object.name == "btn_twitter") {
-	// 	l = "https://twitter.com/sarwinwastaken";
-	// } else if (intersects[0].object.name == "btn_github") {
-	// 	l = "https://github.com/sarwinr";
-	// }
 
 	if (_link === l) window.open(l, "_blank");
 	return l;
