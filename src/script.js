@@ -1,13 +1,16 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { Screen } from "./modules/screen.js";
 
-const bg_color = 0x8ec3b0;
-const btn_color = 0x4d8a74;
-const btn_hover_color = 0x6aa892;
+const bg_color = 0x434242;
+const btn_color = 0x222222;
+const btn_hover_color = 0xf3efe0;
 
-const loadingMessage = document.getElementById("loading");
+const h1_color = 0x222222;
+const h2_color = 0xf3efe0;
+const h3_color = 0xf3efe0;
+
+const loadingMessage = document.getElementsByClassName("ring");
 
 const renderer = new THREE.WebGLRenderer();
 renderer.shadowMap.enabled = true;
@@ -29,8 +32,8 @@ camera.position.set(0, 0, 5);
 // // setup orbital camera
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.screenSpacePanning = false;
-controls.maxPolarAngle = 0.7;
-controls.minPolarAngle = 0.7;
+controls.maxPolarAngle = 0.2;
+controls.minPolarAngle = 0.2;
 
 controls.mouseButtons = {
 	LEFT: THREE.MOUSE.PAN,
@@ -56,7 +59,7 @@ let mixer;
 const loadingManager = new THREE.LoadingManager();
 
 loadingManager.onLoad = function () {
-	loadingMessage.style.display = "none";
+	loadingMessage[0].style.display = "none";
 };
 
 loadingManager.onError = function (url) {
@@ -68,10 +71,15 @@ gltfLoader.load("environment.gltf", (gltf) => {
 	const table = gltf.scene;
 
 	table.traverse((o) => {
+		console.log(o.name);
 		if (o.name === "ground") {
-			o.material = new THREE.MeshBasicMaterial({ color: 0x8ec3b0 });
-		} else if (o.name === "tname") {
-			o.material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+			o.material = new THREE.MeshBasicMaterial({ color: bg_color });
+		} else if (o.name.includes("h1")) {
+			o.material = new THREE.MeshStandardMaterial({ color: h1_color });
+		} else if (o.name.includes("h2")) {
+			o.material = new THREE.MeshStandardMaterial({ color: h2_color });
+		} else if (o.name.includes("h3")) {
+			o.material = new THREE.MeshStandardMaterial({ color: h3_color });
 		} else if (o.name.includes("btn")) {
 			o.material = new THREE.MeshStandardMaterial({ color: btn_color });
 		}
@@ -85,7 +93,7 @@ gltfLoader.load("environment.gltf", (gltf) => {
 	// action.play();
 
 	table.position.set(0, -2, 0);
-	table.rotation.set(0, -0.5, 0);
+	table.rotation.set(0, -0.1, 0);
 	scene.add(table);
 });
 
@@ -126,25 +134,37 @@ window.addEventListener("mouseup", (e) => {
 function clicked(_link = null) {
 	let l = "";
 
-	// create case for intersects[0].object.name
-	switch (intersects[0].object.name) {
-		case "btn_twitter":
-			l = "https://twitter.com/sarwinwastaken";
-			break;
-		case "btn_github":
-			l = "https://github.com/sarwinr";
-			break;
-		case "btn_in":
-			l = "https://www.linkedin.com/in/sarwinr/";
-			break;
-		case "btn_email":
-			l = "mailto:sarwinr@outlook.com";
-			break;
-		case "btn_resume":
-			l = "CV.pdf";
-			break;
-		default:
-			break;
+	// check if the name contains 'lbtn' (linked button)
+	// extract the link from the name [btn_www~google~com!test] [~ = .] [! = /] [* = :]
+	console.log(intersects[0].object.name);
+	if (intersects[0].object.name.includes("lbtn")) {
+		l = intersects[0].object.name.split("_")[1];
+		l =
+			"https://" +
+			l.split("~").join(".").split("!").join("/").split("*").join(":");
+	} else if (intersects[0].object.name.includes("btn")) {
+		switch (intersects[0].object.name) {
+			case "btn_javascript-certificate":
+				l =
+					"https://www.freecodecamp.org/certification/sarwin/javascript-algorithms-and-data-structures";
+				break;
+			case "btn_backend-certificate":
+				l =
+					"https://www.freecodecamp.org/certification/sarwin/back-end-development-and-apis";
+				break;
+			case "mongo-certificate":
+				l =
+					"https://university.mongodb.com/course_completion/5d932513-6335-42ee-9915-da1762a782c0";
+				break;
+			case "btn_email":
+				l = "mailto:sarwinr@outlook.com";
+				break;
+			case "btn_resume":
+				l = "CV.pdf";
+				break;
+			default:
+				break;
+		}
 	}
 
 	if (_link === l) window.open(l, "_blank");
